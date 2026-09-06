@@ -445,9 +445,11 @@
     <button type="button" class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
 
     <h3 id="modalTitle">M'envoyer un message</h3>
-    <p class="modal-sub">Remplissez le formulaire — votre client mail s'ouvrira avec le message déjà prêt à envoyer.</p>
+    <p class="modal-sub">Remplissez le formulaire pour envoyer votre message directement à mon adresse email.</p>
 
-    <form id="contactForm" novalidate>
+    <form id="contactForm" action="https://formsubmit.co/taoufiq.maroub25@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+      <input type="hidden" name="_template" value="table">
       <div class="form-row">
         <label for="cf-name">Nom</label>
         <input type="text" id="cf-name" name="name" placeholder="Votre nom" required>

@@ -34,16 +34,3 @@ const revealEls = document.querySelectorAll('.reveal');
   overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal(); });
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const subject = document.getElementById('cf-subject').value.trim();
-    const message = document.getElementById('cf-message').value.trim();
-
-    const body = `Nom: ${name}\nEmail: ${email}\n\n${message}`;
-    const mailto = `mailto:taoufiq.maroub25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    closeModal();
-    form.reset();
-  });
