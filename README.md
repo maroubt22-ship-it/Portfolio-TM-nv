@@ -79,7 +79,7 @@ For direct delivery through your own Gmail account, deploy `google-apps-script/C
 4. Copy the `/exec` deployment URL into the empty `data-endpoint` attribute on the `contactForm` in `index.html`.
 5. Push the change and test the form from the hosted site.
 
-The Apps Script sends the submitted name, email, subject, and message with `GmailApp.sendEmail`, and the form displays success only after the endpoint confirms that Gmail accepted the message. The form uses a simple URL-encoded POST so Google Apps Script does not receive a browser preflight request. The endpoint URL cannot be generated from this repository because Google requires authorization in your account. The previous FormSubmit action and hidden fields have been removed, so there is no competing delivery service.
+The Apps Script sends the submitted name, email, subject, and message with `GmailApp.sendEmail`, and the form displays success only after the endpoint confirms that Gmail accepted the message. The form uses a simple URL-encoded POST so Google Apps Script does not receive a browser preflight request. The endpoint URL cannot be generated from this repository because Google requires authorization in your account. The previous FormSubmit action and hidden fields have been removed, so there is no competing delivery service. If the endpoint redirects visitors to Google sign-in, edit the deployment and set **Who has access** to **Anyone**.
 
 ## Notes on the animations
 

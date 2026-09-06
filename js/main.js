@@ -61,7 +61,7 @@ const revealEls = document.querySelectorAll('.reveal');
     }catch(error){
       formStatus.textContent = error.message === 'Gmail endpoint is not configured'
         ? 'Le service Gmail n\'est pas encore configuré.'
-        : 'Le message n\'a pas pu être envoyé. Veuillez réessayer.';
+        : 'Le service Gmail est inaccessible. Vérifiez que le Web App est accessible à tous.';
       formStatus.className = 'form-status is-visible is-error';
     }finally{
       submitBtn.disabled = false;
