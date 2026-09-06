@@ -954,6 +954,18 @@
   }
   .modal-actions .btn{padding:13px 22px; font-size:14.5px;}
 
+  .form-status{
+    display:none;
+    margin:16px 0 0;
+    color:var(--text-muted);
+    font-size:13px;
+    text-align:right;
+  }
+  .form-status.is-visible{display:block;}
+  .form-status.is-success{color:var(--accent-mint);}
+  .form-status.is-error{color:#ff9c9c;}
+  .modal-actions .btn:disabled{cursor:wait; opacity:.6;}
+
   @media (max-width:520px){
     .modal-card{padding:30px 24px;}
     .modal-actions{flex-direction:column-reverse;}
