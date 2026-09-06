@@ -44,8 +44,6 @@ const revealEls = document.querySelectorAll('.reveal');
 
     try{
       const formData = new URLSearchParams(new FormData(form));
-      formData.set('_subject', formData.get('subject') || 'Nouveau message depuis le portfolio');
-      formData.set('_replyto', formData.get('email'));
       const endpoint = form.dataset.endpoint.trim();
       if(!endpoint) throw new Error('Gmail endpoint is not configured');
       const response = await fetch(endpoint, {
@@ -54,14 +52,16 @@ const revealEls = document.querySelectorAll('.reveal');
         headers:{Accept:'application/json'}
       });
       const result = await response.json();
-      if(!response.ok || result.success !== 'true' && result.success !== true){
+      if(!response.ok || result.success !== true){
         throw new Error(result.message || 'Submission failed');
       }
       form.reset();
       formStatus.textContent = 'Message envoyé. Merci pour votre message.';
       formStatus.className = 'form-status is-visible is-success';
     }catch(error){
-      formStatus.textContent = 'Le service Gmail n\'est pas encore configuré. Ajoutez l\'URL Web App Google Apps Script.';
+      formStatus.textContent = error.message === 'Gmail endpoint is not configured'
+        ? 'Le service Gmail n\'est pas encore configuré.'
+        : 'Le message n\'a pas pu être envoyé. Veuillez réessayer.';
       formStatus.className = 'form-status is-visible is-error';
     }finally{
       submitBtn.disabled = false;
