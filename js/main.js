@@ -62,7 +62,7 @@ const revealEls = document.querySelectorAll('.reveal');
       formStatus.textContent = 'Message envoyé. Merci pour votre message.';
       formStatus.className = 'form-status is-visible is-success';
     }catch(error){
-      formStatus.textContent = 'Envoi impossible. Vérifiez l\'activation FormSubmit ou réessayez.';
+      formStatus.textContent = 'Envoi impossible. Confirmez l\'activation FormSubmit dans taoufiq.maroub25@gmail.com, puis réessayez.';
       formStatus.className = 'form-status is-visible is-error';
     }finally{
       submitBtn.disabled = false;
