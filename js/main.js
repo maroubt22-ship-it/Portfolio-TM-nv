@@ -46,7 +46,8 @@ const revealEls = document.querySelectorAll('.reveal');
       const formData = Object.fromEntries(new FormData(form));
       formData._subject = formData.subject || 'Nouveau message depuis le portfolio';
       formData._replyto = formData.email;
-      const response = await fetch(form.action, {
+      const endpoint = form.dataset.endpoint.trim() || form.action;
+      const response = await fetch(endpoint, {
         method:'POST',
         body:JSON.stringify(formData),
         headers:{
