@@ -43,17 +43,26 @@ const revealEls = document.querySelectorAll('.reveal');
     submitBtn.disabled = true;
 
     try{
+      const formData = Object.fromEntries(new FormData(form));
+      formData._subject = formData.subject || 'Nouveau message depuis le portfolio';
+      formData._replyto = formData.email;
       const response = await fetch(form.action, {
         method:'POST',
-        body:new FormData(form),
-        headers:{Accept:'application/json'}
+        body:JSON.stringify(formData),
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        }
       });
-      if(!response.ok) throw new Error('Submission failed');
+      const result = await response.json();
+      if(!response.ok || result.success !== 'true' && result.success !== true){
+        throw new Error(result.message || 'Submission failed');
+      }
       form.reset();
       formStatus.textContent = 'Message envoyé. Merci pour votre message.';
       formStatus.className = 'form-status is-visible is-success';
     }catch(error){
-      formStatus.textContent = 'Impossible d\'envoyer le message. Veuillez réessayer.';
+      formStatus.textContent = 'Envoi impossible. Vérifiez l\'activation FormSubmit ou réessayez.';
       formStatus.className = 'form-status is-visible is-error';
     }finally{
       submitBtn.disabled = false;
