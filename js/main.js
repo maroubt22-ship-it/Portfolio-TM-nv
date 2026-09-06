@@ -43,17 +43,15 @@ const revealEls = document.querySelectorAll('.reveal');
     submitBtn.disabled = true;
 
     try{
-      const formData = Object.fromEntries(new FormData(form));
-      formData._subject = formData.subject || 'Nouveau message depuis le portfolio';
-      formData._replyto = formData.email;
-      const endpoint = form.dataset.endpoint.trim() || form.action;
+      const formData = new URLSearchParams(new FormData(form));
+      formData.set('_subject', formData.get('subject') || 'Nouveau message depuis le portfolio');
+      formData.set('_replyto', formData.get('email'));
+      const endpoint = form.dataset.endpoint.trim();
+      if(!endpoint) throw new Error('Gmail endpoint is not configured');
       const response = await fetch(endpoint, {
         method:'POST',
-        body:JSON.stringify(formData),
-        headers:{
-          Accept:'application/json',
-          'Content-Type':'application/json'
-        }
+        body:formData,
+        headers:{Accept:'application/json'}
       });
       const result = await response.json();
       if(!response.ok || result.success !== 'true' && result.success !== true){
@@ -63,7 +61,7 @@ const revealEls = document.querySelectorAll('.reveal');
       formStatus.textContent = 'Message envoyé. Merci pour votre message.';
       formStatus.className = 'form-status is-visible is-success';
     }catch(error){
-      formStatus.textContent = 'Envoi impossible. Confirmez l\'activation FormSubmit dans taoufiq.maroub25@gmail.com, puis réessayez.';
+      formStatus.textContent = 'Le service Gmail n\'est pas encore configuré. Ajoutez l\'URL Web App Google Apps Script.';
       formStatus.className = 'form-status is-visible is-error';
     }finally{
       submitBtn.disabled = false;

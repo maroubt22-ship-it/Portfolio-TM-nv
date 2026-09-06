@@ -67,7 +67,7 @@ None of these require installing project dependencies — they're just simple st
 - **Text, sections, links:** edit `index.html` directly — it's organized top to bottom in the same order as the page (Nav → Hero → About → Skills → Experience → Projects → Formation/Certifications → Contact → Footer).
 - **Colors, spacing, fonts, animations:** edit `css/style.css`. All the theme colors are defined as CSS variables at the very top of the file (`:root { ... }`), so changing the green accent everywhere is a one-line change.
 - **Profile photo:** replace `assets/images/avatar.jpg` with a new image of the same name (or update the `src` in `index.html` if you rename it).
-- **Contact form behavior:** the form submits asynchronously as JSON to FormSubmit and forwards messages to `taoufiq.maroub25@gmail.com` without redirecting visitors to Gmail. It displays an in-page confirmation only when FormSubmit returns an explicit success response; otherwise it displays an activation error. FormSubmit sends a one-time activation email the first time the form is used; confirm it before accepting public messages, including checking Gmail Spam if needed.
+- **Contact form behavior:** the form submits asynchronously to the configured Google Apps Script Web App and forwards messages directly to `taoufiq.maroub25@gmail.com` without redirecting visitors to Gmail. It displays an in-page confirmation only when Gmail accepts the message. No third-party FormSubmit fallback is used.
 
 ### Direct Gmail delivery
 
@@ -79,7 +79,7 @@ For direct delivery through your own Gmail account, deploy `google-apps-script/C
 4. Copy the `/exec` deployment URL into the `data-endpoint` attribute on the `contactForm` in `index.html`.
 5. Push the change and test the form from the hosted site.
 
-The Apps Script sends the submitted name, email, subject, and message with `GmailApp.sendEmail`, and the form displays success only after the endpoint confirms that Gmail accepted the message. The endpoint URL cannot be generated from this repository because Google requires authorization in your account.
+The Apps Script sends the submitted name, email, subject, and message with `GmailApp.sendEmail`, and the form displays success only after the endpoint confirms that Gmail accepted the message. The form uses a simple URL-encoded POST so Google Apps Script does not receive a browser preflight request. The endpoint URL cannot be generated from this repository because Google requires authorization in your account.
 
 ## Notes on the animations
 

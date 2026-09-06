@@ -2,7 +2,7 @@ const RECIPIENT = 'taoufiq.maroub25@gmail.com';
 
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents || '{}');
+    const data = e.parameter || {};
     const name = String(data.name || '').trim();
     const email = String(data.email || '').trim();
     const subject = String(data.subject || '').trim();
