@@ -814,23 +814,31 @@
     text-align:center;
   }
 
-  .contact-video-wrap{
+  .contact-image-wrap{
     width:min(100%, 360px);
-    aspect-ratio:16 / 9;
-    padding:8px;
-    border:1px solid rgba(127,232,187,0.28);
+    aspect-ratio:4 / 3;
+    padding:9px;
+    border:2px solid var(--accent-mint);
     border-radius:18px;
     background:rgba(4,24,18,0.32);
     box-shadow:0 14px 30px rgba(2,19,14,0.22), inset 0 0 0 1px rgba(255,255,255,0.06);
     overflow:hidden;
+    animation:contactImageFlash 2.8s ease-in-out infinite;
   }
-  .contact-video{
+  .contact-image{
     display:block;
     width:100%;
     height:100%;
     object-fit:cover;
     border-radius:11px;
     background:var(--bg-deep);
+  }
+  @keyframes contactImageFlash{
+    0%,100%{border-color:rgba(127,232,187,0.45); box-shadow:0 14px 30px rgba(2,19,14,0.22), 0 0 8px rgba(127,232,187,0.16), inset 0 0 0 1px rgba(255,255,255,0.06);}
+    50%{border-color:var(--accent-mint); box-shadow:0 14px 30px rgba(2,19,14,0.22), 0 0 30px rgba(127,232,187,0.78), 0 0 62px rgba(127,232,187,0.3), inset 0 0 0 1px rgba(255,255,255,0.12);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .contact-image-wrap{animation:none;}
   }
 
   @media (max-width:800px){
