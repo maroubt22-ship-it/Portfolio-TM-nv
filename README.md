@@ -1,4 +1,4 @@
-# Portfolio — Taoufiq Maroub
+# Portfolio — Taoufiq MAROUB
 
 A single-page, animated developer/infrastructure portfolio built with plain **HTML, CSS and JavaScript** — no framework, no build step, no npm dependencies required.
 
@@ -10,14 +10,15 @@ portfolio/
 ├── css/
 │   └── style.css           # All styling, layout and animations
 ├── js/
-│   └── main.js             # Scroll reveal, logo/network animations, contact modal logic
+│   └── main.js             # Scroll reveal, logo/network animations, theme and music controls
 ├── assets/
-│   └── images/
-│       └── avatar.jpg      # Profile photo used in the hero section
+│   ├── images/
+│   │   └── avatar.jpg      # Profile photo used in the hero section
+│   └── Calm piano music for relaxation #relaxingmusic.mp4
 └── README.md                # This file
 ```
 
-Everything is self-contained in these five items — there is nothing else to fetch or install locally.
+Everything is self-contained in these project files — there is nothing else to fetch or install locally.
 
 ## Requirements
 
@@ -68,6 +69,8 @@ None of these require installing project dependencies — they're just simple st
 - **Colors, spacing, fonts, animations:** edit `css/style.css`. All the theme colors are defined as CSS variables at the very top of the file (`:root { ... }`), so changing the green accent everywhere is a one-line change.
 - **Profile photo:** replace `assets/images/avatar.jpg` with a new image of the same name (or update the `src` in `index.html` if you rename it).
 - **Contact links:** the email address opens a Gmail Compose window, the phone number opens the device dialer, and LinkedIn opens in a new browser tab. There is no contact form or backend dependency.
+- **Theme control:** the light/dark choice is stored in `localStorage` under `portfolio-theme`.
+- **Music control:** `#portfolioAudio` references `assets/Calm piano music for relaxation #relaxingmusic.mp4`. Playback is off by default and loops only after the visitor clicks the music control.
 
 ## Notes on the animations
 
