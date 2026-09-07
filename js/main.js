@@ -1,4 +1,4 @@
-const revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
