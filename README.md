@@ -14,7 +14,8 @@ portfolio/
 ├── assets/
 │   ├── images/
 │   │   └── avatar.jpg      # Profile photo used in the hero section
-│   └── Calm piano music for relaxation #relaxingmusic.mp4
+│   ├── Calm piano music for relaxation #relaxingmusic.mp4
+│   └── Enregistrement 2026-09-07 131640.mp4
 └── README.md                # This file
 ```
 
@@ -71,6 +72,7 @@ None of these require installing project dependencies — they're just simple st
 - **Contact links:** the email address opens a Gmail Compose window, the phone number opens the device dialer, and LinkedIn opens in a new browser tab. There is no contact form or backend dependency.
 - **Theme control:** the light/dark choice is stored in `localStorage` under `portfolio-theme`.
 - **Music control:** `#portfolioAudio` references `assets/Calm piano music for relaxation #relaxingmusic.mp4`. Playback is off by default and loops only after the visitor clicks the music control.
+- **Contact video:** the Contact section uses `assets/Enregistrement 2026-09-07 131640.mp4` as a muted, looping inline video.
 
 ## Notes on the animations
 
